@@ -551,7 +551,7 @@
 <p><img src="/../pic/CN/chapter1/17.png"></p>
 </li>
 </ol>
-<h2 id="1-3-错题解析"><a href="#1-3-错题解析" class="headerlink" title="1.3 错题解析"></a>1.3 错题解析</h2><h1 id="第二章-物理层"><a href="#第二章-物理层" class="headerlink" title="第二章 物理层"></a>第二章 物理层</h1><h2 id="2-1-通信基础"><a href="#2-1-通信基础" class="headerlink" title="2.1 通信基础"></a>2.1 通信基础</h2><ol>
+<h2 id="1-3-错题解析"><a href="#1-3-错题解析" class="headerlink" title="1.3 错题解析"></a>1.3 错题解析</h2><h1 id="第二章-物理层"><a href="#第二章-物理层" class="headerlink" title="第二章 物理层"></a>第二章 物理层</h1><h2 id="2-1-通信基础"><a href="#2-1-通信基础" class="headerlink" title="2.1 通信基础"></a>2.1 通信基础</h2><h3 id="2-1-1-基本概念"><a href="#2-1-1-基本概念" class="headerlink" title="2.1.1 基本概念"></a>2.1.1 基本概念</h3><ol>
 <li><p><strong>数据、信号与码元</strong> </p>
 <p><strong>数据：</strong>传输信号的实体，通常是有意义的符号序列</p>
 <p><strong>信号：</strong>数据的电气&#x2F;电磁的表现，是数据在传输过程中存在的形式</p>
@@ -562,10 +562,12 @@
 <p><strong>信宿：</strong>接受数据的终点；</p>
 <p><strong>信道：</strong>信号传输媒介。一般用来表示向某一方向传送信息的介质，因此一条通信线路往往包括一条发送信道和一条接收信道。</p>
 <ul>
-<li>信道分类：<ul>
+<li><p>信道分类：</p>
+<ul>
 <li>按传输信号分：模拟信道，数字信道；</li>
 <li>按传输介质分：无线信道、有线信道；</li>
 </ul>
+<p><img src="/../pic/CN/chapter2/2.png"></p>
 </li>
 </ul>
 </li>
@@ -579,6 +581,158 @@
 </ol>
 <blockquote>
 <p><strong>波特</strong>和<strong>比特</strong>是两个不同概念，但是二者在数量上存在一定的联系，若一个码元携带<em>n</em>比特的信息量，则<em>M</em>波特率的码元传输速率所对应的信息传输速率为$$Mn$$比特每秒；</p>
+</blockquote>
+<h3 id="2-1-2-奈奎斯特定理与香农定理"><a href="#2-1-2-奈奎斯特定理与香农定理" class="headerlink" title="2.1.2 奈奎斯特定理与香农定理"></a>2.1.2 奈奎斯特定理与香农定理</h3><ol>
+<li><p><strong>奈奎斯特定理</strong></p>
+<p>奈氏准则：在<strong>理想低通、无噪声、带宽受限</strong>条件下，为了避免码间串扰，极限码元传输速率为2W Baud，W是信道带宽：极限传输速率&#x3D;$2W\lg_2 V$（$b&#x2F;s$）【W的单位为Hz，V的意思是几种码元或者码元的离散电平数目】</p>
+<blockquote>
+<p><font color='red'><strong>笔记：</strong></font>码间串扰指的是接收端收到的信号波形失去了，码元之间的清晰界限的现象；简而言之就是发送的速度太快接，收端不能分清发的是什么了，例如发送端发送的是0&#x2F;1信号，而在接收端不能分清哪个是0，哪个是1。<strong>【注】</strong>奈氏准则只是限制了<strong>码元传输速率</strong>，而对信息速率没有给出限制；</p>
+</blockquote>
+</li>
+<li><p><strong>香农定理</strong></p>
+<p>香农定理：在<strong>带宽受限且有噪声的信道</strong>中，为了不产生误差，信息的数据传输速率有上限值；信道极限数据传输速率&#x3D;$W\log_2 (1+S&#x2F;N)$  【W的单位为Hz，S&#x2F;N为信噪比】</p>
+<blockquote>
+<p><font color='red'><strong>笔记：</strong></font>信噪比（dB）&#x3D;$10\log_10(S&#x2F;N)  $</p>
+</blockquote>
+</li>
+</ol>
+<h3 id="2-1-3-编码与调制"><a href="#2-1-3-编码与调制" class="headerlink" title="2.1.3 编码与调制"></a>2.1.3 编码与调制</h3><ul>
+<li>编码：数据变换为模拟信号</li>
+<li>调制：数据变化为数字信号</li>
+</ul>
+<ol>
+<li><p><strong>$数字数据\stackrel{编码}{\rightarrow} 数字信号$</strong></p>
+<ol>
+<li><img src="/../pic/CN/chapter2/1.png"></li>
+</ol>
+<blockquote>
+<p><font color='red' > <strong>笔记：</strong></font></p>
+<table>
+<thead>
+<tr>
+<th align="center">编码方式</th>
+<th>具体措施</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">非归零编码</td>
+<td>【高1低0】无检错，难以同步；</td>
+</tr>
+<tr>
+<td align="center">归零编码</td>
+<td>【码元归零】在一个码元内要恢复到零，也就是在“1”的时候要变成零；</td>
+</tr>
+<tr>
+<td align="center">反向不归零编码</td>
+<td></td>
+</tr>
+<tr>
+<td align="center">曼彻斯特编码</td>
+<td>【码元均分，高低相反】在一个码元内时间等分信号前高后低为1，0相反；位中间的跳变可用于时钟信号（便于同步），<strong>数据传输速率只有调制速率一般；</strong></td>
+</tr>
+<tr>
+<td align="center">差分曼彻斯特编码</td>
+<td>【同1异0】码元为1，则前半个码元电平与上一个电平相反，0相反；可以同步，抗干扰强于曼彻斯特编码</td>
+</tr>
+<tr>
+<td align="center">4B&#x2F;5B编码</td>
+<td>比特流中插入额外比特打破一连串的0或者1.例如0000编码为11110；</td>
+</tr>
+</tbody></table>
+</blockquote>
+</li>
+<li><p><strong>$数字数据\stackrel{调制}{\rightarrow} 模拟信号$</strong></p>
+<p><img src="/../pic/CN/chapter2/3.png"></p>
+</li>
+<li><p><strong>$模拟数据\stackrel{编码}{\rightarrow} 数字信号$</strong></p>
+<p><img src="/../pic/CN/chapter2/4.png"></p>
+</li>
+<li><p><strong>$模拟数据\stackrel{调制}{\rightarrow} 模拟信号$</strong></p>
+<p><img src="/../pic/CN/chapter2/5.png"></p>
+</li>
+</ol>
+<h3 id="2-1-4-电路交换、报文交换与分组交换"><a href="#2-1-4-电路交换、报文交换与分组交换" class="headerlink" title="2.1.4 电路交换、报文交换与分组交换"></a>2.1.4 电路交换、报文交换与分组交换</h3><ol>
+<li><p><strong>电路交换</strong></p>
+<p>在传输数据前，两个节点中间必须建立一条<strong>专用的、双方独占</strong>的物理通信路径。电路交换分为三个阶段：连接、建立、数据传输、连接释放；</p>
+<blockquote>
+<p><font color='red'><strong>笔记：</strong></font>电路交换就是一种端到端的通信方式，其中独占资源是其主要的特点。同时只要是电路上的节点(<strong>处理源节点和目的节点</strong>），都采用的是”直通方式“，不存在存储转发所耗费的时间；   </p>
+</blockquote>
+<p><img src="/../pic/CN/chapter2/image-20230130130715144.png" alt="image-20230130130715144"></p>
+</li>
+<li><p><strong>报文交换</strong></p>
+<p>数据交换的单位是<strong>报文</strong>，报文携带<strong>目的地址、源地址</strong>等信息；在交换节点采用的是存储转发的传输方式；</p>
+<blockquote>
+<p><font color='red'><strong>笔记：</strong></font>报文是网络中传输与交换的数据单元，即站点一次性要发送的数据块。</p>
+<p><img src="/../pic/CN/chapter2/image-20230130131407713.png" alt="image-20230130131407713"></p>
+</blockquote>
+<p><img src="/../pic/CN/chapter2/image-20230130131427423.png" alt="image-20230130131427423"></p>
+</li>
+<li><p><strong>分组交换</strong></p>
+<p>分组：计算机网络不能连续传输任意长的数据，因此在实际网络系统中把数据切分成一小块，然后再发生。这种小块就称为<strong>分组</strong>；</p>
+<p><img src="/../pic/CN/chapter2/image-20230130132725958.png" alt="image-20230130132725958"></p>
+<blockquote>
+<p><font color='red'><strong>笔记：</strong></font>分组交换和报文交换的区别在于分组交换<strong>限制了传输的数据单元的长度</strong>，一般选用128B。同时报文交换和分组交换均属于<strong>存储转发交换方式</strong>。其中分组交换又可以分为<strong>数据报方式</strong>和<strong>虚电路方式</strong>；</p>
+<ul>
+<li><p><strong>数据报方式</strong></p>
+<p>基本内容和上述分组交换方式的概述一样，数据报为网络层提供的是<strong>无连接服务</strong>发送方可以随时发送，网络节点随时接收；每个分组要携带源地址和目的地址以及分组号。</p>
+</li>
+<li><p><strong>虚电路</strong></p>
+<p>交换方式和电路交换类似，但是建立的连接是<strong>逻辑连接</strong>。虚电路为网络层提供<strong>连接服务</strong>，源节点和目的节点之间建立一个逻辑连接。【<strong>注</strong>】每个分组只需要携带<strong>虚电路号、分组号、检验和一些控制信息</strong>，不需要携带目的地址和源地址等信息；</p>
+<p><img src="/../pic/CN/chapter2/image-20230130134047817.png" alt="image-20230130134047817"></p>
+</li>
+</ul>
+</blockquote>
+</li>
+</ol>
+<blockquote>
+<p><font color='red'><strong>笔记：</strong></font>什么是无连接&#x2F;连接服务？连接服务就是为分组确定好你该沿着哪条路线走，例如上述虚电路，存在一条逻辑电路。而无连接就是分组顺便乱走，没有固定的个路线，也就导致报文到达目的节点会存在乱序信息，例如上述的数据报方式。</p>
+</blockquote>
+<p><img src="/../pic/CN/chapter2/image-20230130132036564.png" alt="image-20230130132036564"></p>
+<ul>
+<li><p><strong>数据交换方式的选择</strong></p>
+<p>数据大、时间长选择电路交换；</p>
+<p>端到端有很多链路组成选择<strong>分组交换</strong>，其中交换时延少，适合计算机之间突发式的数据通信；</p>
+</li>
+</ul>
+<h2 id="2-2-传输介质"><a href="#2-2-传输介质" class="headerlink" title="2.2 传输介质"></a>2.2 传输介质</h2><h3 id="2-2-1-双绞线、同轴电缆、光纤与无限传输介质"><a href="#2-2-1-双绞线、同轴电缆、光纤与无限传输介质" class="headerlink" title="2.2.1 双绞线、同轴电缆、光纤与无限传输介质"></a>2.2.1 双绞线、同轴电缆、光纤与无限传输介质</h3><p>传输介质：也称其为传输媒体&#x2F;传输媒介，就是在数据系统中发送设备与接受设备之间的物理通路。介质可分为导向（光纤，铜线等）&#x2F;非导向（空气、真空等）传输介质。</p>
+<ol>
+<li><strong>双绞线</strong></li>
+</ol>
+<p>   <img src="/../pic/CN/chapter2/image-20230130194559406.png" alt="image-20230130194559406"></p>
+<p>   双绞线，采用两根一定规则并排绞合的，相互绝缘的铜导线组成。双绞线的带宽取决于铜线的粗细和传输的距离。</p>
+<ol start="2">
+<li><p><strong>同轴电缆</strong></p>
+<p><img src="/../pic/CN/chapter2/image-20230130194543252.png" alt="image-20230130194543252"></p>
+<p>同轴电缆由<strong>导体铜质芯线，绝缘层、网状编织屏蔽层和塑料外壳</strong>构成。</p>
+<p>同轴电缆分为<strong>基带同轴电缆和宽带同轴电缆</strong>； </p>
+</li>
+<li><p><strong>光纤</strong></p>
+<p><img src="/../pic/CN/chapter2/image-20230130200344832.png" alt="image-20230130200344832"></p>
+<p>光纤主要是由<strong>纤芯（实心）和包层</strong>，利用光脉冲来进行通信，有脉冲表示1，无光脉冲表示0</p>
+</li>
+<li><p><strong>无线传输介质</strong></p>
+<p><img src="/../pic/CN/chapter2/image-20230130200636195.png" alt="image-20230130200636195"></p>
+</li>
+</ol>
+<h3 id="2-2-2-物理层接口的特性"><a href="#2-2-2-物理层接口的特性" class="headerlink" title="2.2.2 物理层接口的特性"></a>2.2.2 物理层接口的特性</h3><ul>
+<li><p>中继器</p>
+<p><img src="/../pic/CN/chapter2/image-20230130204559688.png" alt="image-20230130204559688"></p>
+</li>
+<li><p>集线器（多口中继器）</p>
+<p><img src="/../pic/CN/chapter2/image-20230130204611151.png" alt="image-20230130204611151"></p>
+</li>
+</ul>
+<p>物理层考虑的是如何在连接到各种计算机传输媒体上传输比特流，因其网络设备的种类繁多，通信方式各不同。物理层尽可能屏蔽这些差异，物理层的主要任务可以描述为确定与传输媒体的接口有关特性：</p>
+<p><img src="/../pic/CN/chapter2/image-20230130201133081.png" alt="image-20230130201133081"></p>
+<h3 id="2-2-3-错题解析"><a href="#2-2-3-错题解析" class="headerlink" title="2.2.3 错题解析"></a>2.2.3 错题解析</h3><p><img src="/../pic/CN/chapter2/image-20230130202744037.png" alt="image-20230130202744037"></p>
+<blockquote>
+<p><font color='red'><strong>错误原因：</strong></font>同轴电缆特性没有搞清，错选D。<img src="/../pic/CN/chapter2/image-20230130203025814.png" alt="image-20230130203025814"></p>
+</blockquote>
+<p><img src="/../pic/CN/chapter2/image-20230130203059265.png" alt="image-20230130203059265"></p>
+<blockquote>
+<p><font color='red'><strong>错误原因：</strong></font>光纤的基本特性没有完全记忆清楚。</p>
+<p>多模光纤：将不同入射角度的多条光线在一根光纤中传输，这种光纤称为<strong>多模光纤</strong>，多模光纤光源是<strong>发光二极管</strong>，由于光脉冲在多模光纤中会逐渐展宽，因此多模光纤只适合近距离传输；</p>
+<p>单模光纤：光纤的直径小到只有一个光的波长，光纤就像一根波导那样，可使光纤一直向前传播而不会产生反射，这种光纤称为<strong>单模光纤</strong>。光源是<strong>定向性很好的半导体激光器</strong>，衰减少，适合远距离传输。</p>
 </blockquote>
 
                 

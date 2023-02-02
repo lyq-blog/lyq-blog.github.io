@@ -497,6 +497,105 @@
 <p><img src="/../pic/CS/chapter4/4.png"></p>
 </li>
 </ul>
+<h3 id="4-1-2-定长操作码指定格式"><a href="#4-1-2-定长操作码指定格式" class="headerlink" title="4.1.2 定长操作码指定格式"></a>4.1.2 定长操作码指定格式</h3><p>定长注操作码指令格式在指令字的最高位部分分配固定的若干位（定长）表示<strong>操作码</strong>，一般$$n$$位的操作码字段最大表示$2^n$条指令。利于提高计算机硬件资源设计，提高指令译码速度。</p>
+<h3 id="4-1-3-扩展操作码指令格式"><a href="#4-1-3-扩展操作码指令格式" class="headerlink" title="4.1.3 扩展操作码指令格式"></a>4.1.3 扩展操作码指令格式</h3><p>为了在指令字长有限的前提下仍保持其丰富的指令种类，采用<strong>可变长的操作码</strong>；</p>
+<blockquote>
+<p>常见的变长的操作码方法是扩展操作码，它使得操作码的长度随地址码的减少而增加。</p>
+</blockquote>
+<p><img src="/../pic/CS/chapter4/6.png"></p>
+<p>【<strong>注</strong>】不允许短码是长码的的前缀；各个指令不能重复</p>
+<blockquote>
+<p><b><font color='red'>笔记：</font></b>意思就是说我的四位操作码的1110，那么八位操作码就要用1111开头，让别人一看就知道这不是四位操作码而是八位；</p>
+</blockquote>
+<h3 id="4-1-4-指令的操作类型"><a href="#4-1-4-指令的操作类型" class="headerlink" title="4.1.4 指令的操作类型"></a>4.1.4 指令的操作类型</h3><p>一共有四大类，如下图所示：</p>
+<p><img src="/../pic/CS/chapter4/4.png"></p>
+<h2 id="4-2-指令的寻址格式"><a href="#4-2-指令的寻址格式" class="headerlink" title="4.2 指令的寻址格式"></a>4.2 指令的寻址格式</h2><p><img src="/../pic/CS/chapter4/14.png"></p>
+<p>寻址方式是指寻找指令或者操作数有效地址的方式；寻址方式分为<strong>指令寻址</strong>和<strong>数据寻址</strong>两大类；</p>
+<blockquote>
+<p><font color='red'><strong>笔记：</strong></font>就是用什么方法找到本条指令要用的数据所在的地址，以及下一条准备执行的指令在什么位置(两个方面)；为什么说‘’有效地址“，因为指令中的地址是形式地址，不是真正的地址，要采用不同的寻址方式（9种）才能得到真正的地址；</p>
+</blockquote>
+<h3 id="4-2-1-指令寻址和数据寻址"><a href="#4-2-1-指令寻址和数据寻址" class="headerlink" title="4.2.1 指令寻址和数据寻址"></a>4.2.1 指令寻址和数据寻址</h3><ul>
+<li>寻找下一条将要执行的指令地址称为指令寻址；</li>
+<li>寻找本条指令的数据所在地址称为数据寻址；</li>
+</ul>
+<ol>
+<li><p><strong>指令寻址</strong>  </p>
+<p>（1）<strong>顺序寻址</strong></p>
+<p>通过程序计数器PC加<strong>“1”</strong>（一个指令字长），自动形成下一条指令格式；</p>
+<blockquote>
+<p><font  color='red'><strong>笔记：</strong></font>PC计数器加一，加的是一个指令字长，不是单纯的数值加一例如开始时主存地址200，执行该指令后可能是指向201或者202等等；示例如下：</p>
+<ul>
+<li><strong>定长</strong>指令字结构   主存<strong>按字编址</strong>   指令字长&#x3D;存储字长&#x3D;16bit&#x3D;2B</li>
+</ul>
+<p><img src="/../pic/CS/chapter4/12.png"></p>
+<ul>
+<li><strong>定长</strong>指令字结构   主存<strong>按字编址</strong>   指令字长&#x3D;存储字长&#x3D;16bit&#x3D;2B</li>
+</ul>
+<p><img src="/../pic/CS/chapter4/13.png"></p>
+<ul>
+<li><strong>变长</strong>指令字结构   主存<strong>按字节编址</strong>   <del>指令字长&#x3D;存储字长&#x3D;16bit&#x3D;2B</del></li>
+</ul>
+<p><img src="/../pic/CS/chapter4/15.png"></p>
+</blockquote>
+<p><strong>(2) 跳转寻址</strong></p>
+<p>由本条指令给出下条指令地址的计算方式（类似C语言中的goto语句）</p>
+</li>
+<li><p><strong>数据寻址</strong></p>
+<p>数据寻址是指如何在指令中表示一个操作数的地址，为了区别不同的寻址方式，在指令中增加一个字段来表明属于哪种寻址方式；</p>
+<table>
+<thead>
+<tr>
+<th align="center"><strong>操作码</strong></th>
+<th><strong>寻址特征</strong></th>
+<th><strong>形式地址</strong></th>
+</tr>
+</thead>
+</table>
+</li>
+</ol>
+<h3 id="4-2-2-常见的数据寻址方式"><a href="#4-2-2-常见的数据寻址方式" class="headerlink" title="4.2.2 常见的数据寻址方式"></a>4.2.2 常见的数据寻址方式</h3><p><img src="/../pic/CS/chapter4/16.png"></p>
+<blockquote>
+<p><font color='red' ><strong>笔记：</strong></font>上图给出的是一地址指令的数据寻址方式，当多地址指令时，根据不同形式地址对应的寻址特征（寻址方法）采用不同的寻址方式；<img src="/../pic/CS/chapter4/17.png"></p>
+</blockquote>
+<ul>
+<li><p><strong>直接寻址</strong></p>
+<p><img src="/../pic/CS/chapter4/18.png"></p>
+</li>
+<li><p><strong>间接寻址</strong></p>
+<p><img src="/../pic/CS/chapter4/19.png"></p>
+</li>
+<li><p><strong>寄存器寻址</strong></p>
+<p><img src="/../pic/CS/chapter4/21.png"></p>
+</li>
+<li><p><strong>寄存器间接寻址</strong></p>
+<p><img src="/../pic/CS/chapter4/20.png"></p>
+</li>
+<li><p><strong>隐含寻址</strong></p>
+</li>
+</ul>
+<p><img src="/../pic/CS/chapter4/22.png"></p>
+<ul>
+<li><strong>立即寻址</strong></li>
+</ul>
+<p><img src="/../pic/CS/chapter4/23.png"></p>
+<ul>
+<li><p><strong>偏移寻址</strong></p>
+<ul>
+<li><p><strong>基址寻址：</strong>以程序的起始存放地址作为“起点“；将CPU中的基址寄存器（BR）的内容加上指令格式中的形式地址，从而形成操作数的有效地址。即：EA&#x3D;(BR)+A</p>
+<p><img src="/../pic/CS/chapter4/24.png"></p>
+<p><img src="/../pic/CS/chapter4/25.png"></p>
+</li>
+<li><p><strong>相对寻址：</strong>以程序计数器PC所指地址作为“”起点“；把程序计数器PC的内容加上指令格式中的形式地址A从而形成操作数的有效地址；即：EA&#x3D;（PC）+A；其中<strong>A是相对于PC所指地址的位移量</strong>，补码表示；</p>
+<p><img src="/../pic/CS/chapter4/26.png"></p>
+<p><img src="/../pic/CS/chapter4/27.png"></p>
+</li>
+<li><p><strong>变址寻址：</strong>程序员自己决定从哪里作为“起点”</p>
+</li>
+</ul>
+</li>
+<li><p><strong>推展寻址</strong></p>
+</li>
+</ul>
 
                 
             </div>
